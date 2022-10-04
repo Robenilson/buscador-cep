@@ -3,14 +3,10 @@ import { FiSearch } from "react-icons/fi";
 import "./styles.css"
 import Axios from "./services/api";
 
-
-
 function App() {
-  const baseURL= "https://viacep.com.br/ws";
+  const baseURL = "https://viacep.com.br/ws";
   const [input, setInput] = useState('')
-  const [endereco, setCet]=useState({});
-
-
+  const [endereco, setCet] = useState({});
 
   async function Teste() {
 
@@ -20,31 +16,19 @@ function App() {
       return;
 
     } else {
-      try{
+      try {
         const response = await Axios.get(`${baseURL}/${input}/json`);
         setCet(response.data)
         setInput("")
-       
-      
-
-      }catch{
+      } catch {
         alert(" Erro pesquisa")
         setInput("")
-
       }
-      
-      
-      }
-
-
-    
-
-
-
-
+    }
   }
 
   return (
+    
     <div className="container">
       <h1 className="title">Buscar Cep</h1>
 
@@ -60,16 +44,16 @@ function App() {
           <FiSearch size={25} color="black" /> </button>
       </div>
 
-      {Object.keys(endereco).length> 0 && (
+      {Object.keys(endereco).length > 0 && (
 
-          <main className="main">
+        <main className="main">
           <span> Cep  {endereco.cep} </span>
           <span> Logradouro {endereco.logradouro} </span>
           <span> Localidade: {endereco.localidade}</span>
           <span> Bairro  {endereco.bairro}  </span>
           <span> UF  {endereco.uf} </span>
 
-          </main>
+        </main>
 
 
 
